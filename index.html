@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMM SQUIDS🦑✨</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    section::before {
+      content: "";
+      display: block;
+      height: 118px;
+      margin-top: -80px;
+      visibility: hidden;
+    }
+  </style>
+   <script id="chapter-data" type="application/json">
+{
+  "ch1": {
+    "title": "How they met!",
+    "pageCount": 6
+  },
+  "ch2": {
+    "title": "Crusty",
+    "pageCount": 3,
+    "note": {
+      "index": 3,
+      "text": "The reason why he changed his mind:"
+    }
+  },
+  "ch3": {
+    "title": "After the splatfest",
+    "pageCount": 2
+  },
+  "ch4": {
+    "title": "Trying out each other's main!",
+    "pageCount": 2
+  },
+  "ch5": {
+    "title": "Haunted House",
+    "pageCount": 1
+  },
+  "ch6": {
+    "title": "Splatoween",
+    "pageCount": 4
+  },
+  "ch7": {
+    "title": "Ultra stamp",
+    "pageCount": 1
+  },
+  "ch8": {
+    "title": "The go-to greeting splatfest",
+    "pageCount": 2
+  },
+  "ch9": {
+    "title": "Dress Warm!",
+    "pageCount": 4
+  },
+  "ch10": {
+    "title": "Birthday",
+    "pageCount": 2
+  },
+  "ch11": {
+    "title": "Winning a 100x match",
+    "pageCount": 2
+  },
+  "ch12": {
+    "title": "A friendly octo appears",
+    "pageCount": 2
+  },
+  "ch13": {
+    "title": "The height mystery",
+    "pageCount": 4
+  },
+  "ch14": {
+    "title": "End of the world",
+    "pageCount": 2
+  },
+  "ch15": {
+    "title": "Like it fast💨",
+    "pageCount": 2
+  },
+  "ch16": {
+    "title": "Newbie apocalypse🌱",
+    "pageCount": 2
+  },
+  "ch17": {
+    "title": "Clothing swap💞",
+    "pageCount": 2
+  },
+  "ch18": {
+    "title": "Doodle🖊",
+    "pageCount": 2
+  },
+  "ch19": {
+    "title": "🌌Stargazing✨️",
+    "pageCount": 2
+  },
+  "ch20": {
+    "title": "✨Fragments of memory✨",
+    "pageCount": 6
+  },
+  "ch21": {
+    "title": "Salmon🐟",
+    "pageCount": 2
+  },
+  "ch22": {
+    "title": "Chill season 2024❄️",
+    "pageCount": 4
+  },
+  "ch23": {
+    "title": "Christmas",
+    "pageCount": 1
+  },
+  "ch24": {
+    "title": "The room🔥",
+    "pageCount": 1
+  },
+  "ch25": {
+    "title": "Cool big brother🐣",
+    "pageCount": 2
+  },
+  "ch26": {
+    "title": "Locker jumpscare🕷️",
+    "pageCount": 2
+  },
+  "ch27": {
+    "title": "I’m flying🚢️",
+    "pageCount": 4
+  },
+  "ch28": {
+    "title": "Best friends!",
+    "pageCount": 5
+  }
+}
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+	const rawData = document.getElementById("chapter-data").textContent;
+    const chapters = JSON.parse(rawData);
+	const comicContainer = document.getElementById("comic-container");
+	
+	// Render comic section
+	for (let i = 28; i >= 1; i--) {
+		const linkEl = document.createElement("a");
+		linkEl.href = `chapter.html?chapterid=ch${i}`;
+		linkEl.className = "bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition";
+		const img = document.createElement("img");
+		img.src = `assets/images/thumb_ch${i}.jpg`;
+		img.alt = `Comic#${i}`;
+		img.className = "w-full h-48 object-cover";
+		linkEl.appendChild(img);
+		const divEl = document.createElement("div");
+		divEl.className = "p-4";
+		const h3El = document.createElement("h3");
+		h3El.textContent = `Comic#${i}`;
+		divEl.appendChild(h3El);
+		const comictitle = chapters["ch" + i].title;
+		const titleEl = document.createElement("p");
+        titleEl.textContent = comictitle;
+		titleEl.className = "text-gray-600 text-sm";
+		divEl.appendChild(titleEl);
+		linkEl.appendChild(divEl);
+		comicContainer.appendChild(linkEl);
+    }
+	// Modal window
+    const modal = document.getElementById('contentWarningModal');
+    const proceedBtn = document.getElementById('proceedBtn');
+
+    window.showContentWarning = function(targetUrl) {
+	  event.preventDefault();
+      proceedBtn.href = targetUrl;
+      modal.classList.remove('hidden');
+    };
+
+    window.hideContentWarning = function() {
+      modal.classList.add('hidden');
+    };
+
+    // Optional: Click outside to close
+    window.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        hideContentWarning();
+      }
+    });
+  });
+</script>
+
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Navbar -->
+  <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
+    <div class="container mx-auto flex flex-col sm:flex-row sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+      <div class="flex items-center space-x-2">
+        <img src="assets/images/logo.png" alt="Logo" class="w-8 h-8 rounded-full">
+        <h1 class="text-xl font-bold">MMM SQUIDS🦑✨</h1>
+      </div>
+      <div class="flex flex-wrap justify-center sm:justify-end gap-2">
+        <a href="#chapters" class="text-gray-700 hover:text-black px-3 py-1">Comics</a>
+        <a href="#spreads" class="text-gray-700 hover:text-black px-3 py-1">Art & Doodles</a>
+        <a href="#extra" class="text-gray-700 hover:text-black px-3 py-1">Extra</a>
+        <a href="#about" class="text-gray-700 hover:text-black px-3 py-1">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <main class="container mx-auto py-8 px-4">
+    <section id="chapters">
+      <h2 class="text-2xl font-semibold mb-6">Comics</h2>
+      <div id="comic-container" class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      </div>
+    </section>
+
+    <section id="spreads" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-6">Art & Doodles</h2>
+      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <a href="spreads/spread1.html" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_spread1.jpg" alt="Character sheets" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Character sheets</h3>
+            <p class="text-gray-600 text-sm"></p>
+          </div>
+        </a>
+		<a href="art.html" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_spread2.jpg" alt="Colour Art" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Colour Art</h3>
+            <p class="text-gray-600 text-sm"></p>
+          </div>
+        </a>
+		<a href="spreads/spread3.html" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_spread3.jpg" alt="Doodles & Memes" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Doodles & Memes</h3>
+            <p class="text-gray-600 text-sm"></p>
+          </div>
+        </a>
+		<a href="spreads/spread4.html" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_spread4.jpg" alt="Ken's art!" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Ken's art!</h3>
+            <p class="text-gray-600 text-sm"></p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <section id="extra" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-6">Extra</h2>
+      <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <a href="gifts.html" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_gifts.jpg" alt="Gifts" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Gifts</h3>
+            <p class="text-gray-600 text-sm">To & From!</p>
+          </div>
+        </a>
+        <a href="#" onclick="showContentWarning('mysterious.html')" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+          <img src="assets/images/thumb_mysterious.jpg" alt="Mysterious" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Mysterious portal</h3>
+            <p class="text-gray-600 text-sm">Proceed with caution...</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" class="mt-12">
+      <h2 class="text-2xl font-semibold mb-4">About</h2>
+      <p class="text-gray-700">It’s a matchmaking miracle!🌟Splatoon OC stories about two silly inkling friends</p>
+      <p class="text-gray-700">Created by yoy & ken</p>
+      <p class="text-gray-700"><a href="https://wavebox.me/wave/bcq0yz3hwz24uhts/" target="_blank" class="text-blue-500 hover:underline">Ask us anything</a></p>
+    </section>
+  </main>
+<!-- Content Warning Modal -->
+<div id="contentWarningModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-2xl shadow-xl p-6 max-w-md w-full relative">
+    <!-- Close button -->
+    <button onclick="hideContentWarning()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+
+    <!-- Modal content -->
+    <h2 class="text-lg font-semibold mb-4 text-yellow-600">
+  <i class="bi bi-exclamation-triangle-fill text-yellow-600 mr-2"></i>
+  Heads Up
+</h2>
+    <p class="text-gray-700 mb-6">
+      This content might include <b>mildly spicy themes</b>, <b>suggestive material</b>, or things that could be
+      <b>offensive</b> to some audiences.
+    </p>
+
+    <!-- Proceed button -->
+    <a id="proceedBtn" href="#" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+      Proceed Anyway
+    </a>
+  </div>
+</div>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
+    <div  class="inline-block">© 2025 mmmsquids. All rights reserved.
+    <a style="display: inline-flex;" href="https://twitter.com/mmmsquids" target="_blank">
+	<i class="bi bi-twitter-x"></i>
+	</a>
+	</div>
+  </footer>
+</body>
+</html>
