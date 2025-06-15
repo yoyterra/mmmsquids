@@ -166,13 +166,13 @@
     // Navigation
     const keys = Object.keys(chapters);
     const index = keys.indexOf(chapterId);
-    if (index > 0) {
-      const prev = keys[index - 1];
-      nav.innerHTML += `<a href="?chapterid=${prev}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">← Previous</a>`;
-    }
     if (index < keys.length - 1) {
       const next = keys[index + 1];
-      nav.innerHTML += `<a href="?chapterid=${next}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">Next →</a>`;
+      nav.innerHTML += `<a href="?chapterid=${next}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">← Next</a>`;
+    }
+    if (index > 0) {
+      const prev = keys[index - 1];
+      nav.innerHTML += `<a href="?chapterid=${prev}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">Previous →</a>`;
     }
   });
 </script>
@@ -180,7 +180,7 @@
 <body class="bg-white text-gray-900 font-sans">
   <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html#chapters" class="text-xl font-bold">← Back</a>
+      <a href="index.html#chapters" class="text-lg font-bold">← Back</a>
       <h1 id="chapter-title" class="text-lg font-semibold">Loading...</h1>
       <div></div>
     </div>
