@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter - My Webcomic</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <script id="chapter-data" type="application/json">
+{
+  "ch1": {
+    "title": "How they met!",
+    "pageCount": 6
+  },
+  "ch2": {
+    "title": "Crusty",
+    "pageCount": 3,
+    "note": {
+      "index": 3,
+      "text": "The reason why he changed his mind:"
+    }
+  },
+  "ch3": {
+    "title": "After the splatfest",
+    "pageCount": 2
+  },
+  "ch4": {
+    "title": "Trying out each other's main!",
+    "pageCount": 2
+  },
+  "ch5": {
+    "title": "Haunted House",
+    "pageCount": 1
+  },
+  "ch6": {
+    "title": "Splatoween",
+    "pageCount": 4
+  },
+  "ch7": {
+    "title": "Ultra stamp",
+    "pageCount": 1
+  },
+  "ch8": {
+    "title": "The go-to greeting splatfest",
+    "pageCount": 2
+  },
+  "ch9": {
+    "title": "Dress Warm!",
+    "pageCount": 4
+  },
+  "ch10": {
+    "title": "Birthday",
+    "pageCount": 2
+  },
+  "ch11": {
+    "title": "Winning a 100x match",
+    "pageCount": 2
+  },
+  "ch12": {
+    "title": "A friendly octo appears",
+    "pageCount": 2
+  },
+  "ch13": {
+    "title": "The height mystery",
+    "pageCount": 4
+  },
+  "ch14": {
+    "title": "End of the world",
+    "pageCount": 2
+  },
+  "ch15": {
+    "title": "Like it fast💨",
+    "pageCount": 2
+  },
+  "ch16": {
+    "title": "Newbie apocalypse🌱",
+    "pageCount": 2
+  },
+  "ch17": {
+    "title": "Clothing swap💞",
+    "pageCount": 2
+  },
+  "ch18": {
+    "title": "Doodle🖊",
+    "pageCount": 2
+  },
+  "ch19": {
+    "title": "🌌Stargazing✨️",
+    "pageCount": 2
+  },
+  "ch20": {
+    "title": "✨Fragments of memory✨",
+    "pageCount": 6
+  },
+  "ch21": {
+    "title": "Salmon🐟",
+    "pageCount": 2
+  },
+  "ch22": {
+    "title": "Chill season 2024❄️",
+    "pageCount": 4
+  },
+  "ch23": {
+    "title": "Christmas",
+    "pageCount": 1
+  },
+  "ch24": {
+    "title": "The room🔥",
+    "pageCount": 1
+  },
+  "ch25": {
+    "title": "Cool big brother🐣",
+    "pageCount": 2
+  },
+  "ch26": {
+    "title": "Locker jumpscare🕷️",
+    "pageCount": 2
+  },
+  "ch27": {
+    "title": "I’m flying🚢️",
+    "pageCount": 4
+  },
+  "ch28": {
+    "title": "Best friends!",
+    "pageCount": 5
+  }
+}
+</script>
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const chapterId = params.get("chapterid");
+
+    const rawData = document.getElementById("chapter-data").textContent;
+    const chapters = JSON.parse(rawData);
+
+    const titleEl = document.getElementById("chapter-title");
+    const imageContainer = document.getElementById("image-container");
+    const nav = document.getElementById("nav-buttons");
+
+    if (!chapterId || !chapters[chapterId]) {
+      titleEl.textContent = "Chapter Not Found";
+      return;
+    }
+
+    const chapter = chapters[chapterId];
+    titleEl.textContent = chapter.title;
+
+    // Render pages based on pageCount
+    for (let i = 1; i <= chapter.pageCount; i++) {
+	
+    // Show note if present
+	  if (chapter.note && chapter.note.index == i) {
+        const noteEl = document.createElement("p");
+        noteEl.textContent = chapter.note.text;
+        noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
+        imageContainer.appendChild(noteEl);
+      }
+      const img = document.createElement("img");
+      img.src = `assets/images/${chapterId}_page${i}.jpg`;
+      img.alt = `${chapter.title} - Page ${i}`;
+      img.className = "mx-auto rounded shadow mb-6";
+      imageContainer.appendChild(img);
+    }
+
+    // Navigation
+    const keys = Object.keys(chapters);
+    const index = keys.indexOf(chapterId);
+    if (index > 0) {
+      const prev = keys[index - 1];
+      nav.innerHTML += `<a href="?chapterid=${prev}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">← Previous</a>`;
+    }
+    if (index < keys.length - 1) {
+      const next = keys[index + 1];
+      nav.innerHTML += `<a href="?chapterid=${next}" class="bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded shadow">Next →</a>`;
+    }
+  });
+</script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold">← Back</a>
+      <h1 id="chapter-title" class="text-lg font-semibold">Loading...</h1>
+      <div></div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Comic images -->
+    <div id="image-container" class="space-y-6"></div>
+
+    <!-- Navigation buttons -->
+    <div id="nav-buttons" class="flex justify-between items-center mt-12 gap-4 flex-wrap"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
+    <div  class="inline-block">© 2025 mmmsquids. All rights reserved.
+    <a style="display: inline-flex;" href="https://twitter.com/mmmsquids" target="_blank">
+	<i class="bi bi-twitter-x"></i>
+	</a>
+	</div>
+  </footer>
+</body>
+</html>
