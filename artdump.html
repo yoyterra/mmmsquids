@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMMSQUIDS - Character sheets</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+   <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+
+    const response = await fetch("assets/data/artdump.json");
+    const pages = await response.json();
+
+    const titleEl = document.getElementById("artpage-title");
+    const imageContainer = document.getElementById("image-container");
+
+    if (!type || !pages || !pages[type]) {
+      titleEl.textContent = "Page Not Found";
+      return;
+    }
+
+    const artpage = pages[type];
+    titleEl.textContent = artpage.title;
+
+    // Render pages based on pageCount
+    for (let i = 1; i <= artpage.pageCount; i++) {
+	
+    // Show note if present
+	  if (artpage.note){
+			for (let j = 0; j < artpage.note.length; j++) {
+				if (artpage.note[j].index == i) {
+					const noteEl = document.createElement("p");
+					noteEl.textContent = artpage.note[j].text;
+					noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
+					imageContainer.appendChild(noteEl);
+				}
+			}
+      }
+      const img = document.createElement("img");
+      img.src = `assets/images/${type}_page${i}.jpg`;
+      img.alt = `${artpage.title} - Page ${i}`;
+      img.className = "mx-auto rounded shadow mb-6";
+      imageContainer.appendChild(img);
+    }
+	
+	if (type == 'doodle') {
+		const videoContainer = document.getElementById("video-container");
+		videoContainer.className = "space-y-6";
+		const noteEl = document.createElement("p");
+        noteEl.textContent = "A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏";
+        noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
+        imageContainer.appendChild(noteEl);
+	}
+
+  });
+</script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html?scrollTo=spreads" class="text-lg font-bold">← Back</a>
+      <h1 id="artpage-title" class="text-lg font-semibold">Loading...</h1>
+      <div></div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-8">
+    <!-- Comic images -->
+    <div id="image-container" class="space-y-6">
+	</div>
+	<div id="video-container" class="space-y-6 hidden">
+	<blockquote class="twitter-tweet tw-align-center" data-media-max-width="560"><p lang="en" dir="ltr">A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏 <a href="https://t.co/HGh62Lg72m">pic.twitter.com/HGh62Lg72m</a></p>&mdash; mmm squids🦑✨ (@mmmsquids) <a href="https://twitter.com/mmmsquids/status/1854388053152038933?ref_src=twsrc%5Etfw">November 7, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+	</div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
+    <div  class="inline-block">© 2025 mmmsquids. All rights reserved.
+    <a style="display: inline-flex;" href="https://twitter.com/mmmsquids" target="_blank">
+	<i class="bi bi-twitter-x"></i>
+	</a>
+	</div>
+  </footer>
+</body>
+</html>

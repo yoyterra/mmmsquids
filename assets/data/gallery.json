@@ -1,0 +1,79 @@
+{
+	"art":[
+      { 
+        "type": "single",
+        "description": "Logo Art"
+      },
+      {
+        "type": "single",
+        "description": "Splatoween outfits!"
+      },
+      {
+        "type": "single",
+        "description": "Happy birthday to newbie!"
+      },
+      {
+        "type": "single",
+        "description": "Merry Christmas 2023"
+      },
+	  {
+        "type": "single",
+        "description": "Frosty fest"
+      },
+	  {
+        "type": "single",
+        "description": "Happy birthday to smug!"
+      },
+	  {
+        "type": "single",
+        "description": "School girl uniform (April fools 2024)"
+      },
+	  {
+        "type": "single",
+        "description": "Maid day 2024"
+      },
+	  {
+        "type": "single",
+        "description": "☀️"
+      },
+	  {
+        "type": "single",
+        "description": "Team beach moment"
+      },
+	  {
+        "type": "single",
+        "description": "Clothing swap"
+      },
+	  {
+        "type": "single",
+        "description": "Team rice"
+      },
+	  {
+        "type": "single",
+        "description": "Stargazing"
+      },
+	  {
+        "type": "single",
+        "description": "Thank you 1k followers"
+      },
+	  {
+        "type": "single",
+        "description": "Poll winner: Newbie x Smug"
+      },
+	  {
+        "type": "single",
+        "description": "Christmas",
+		"ext": "gif"
+      },
+      {
+        "type": "group",
+        "thumbnailIndex": 2,
+        "description": "Valentines 2025",
+        "imageCount": 2
+      },
+	  {
+        "type": "single",
+        "description": "Did you want to turf?"
+      }
+    ]
+}

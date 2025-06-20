@@ -1,0 +1,20 @@
+{
+  "charactersheet": {
+    "title": "Character sheets",
+    "pageCount": 4
+  },
+  "doodle": {
+    "title": "Doodles & Memes",
+    "pageCount": 10,
+	"note": [
+		{
+			"index": 2,
+			"text": "The gear adjustment update"
+		},
+		{
+			"index": 6,
+			"text": "\"Am I a boy? Am I a girl? Who knows! But everyone finds me hot and that makes everyone gay\""
+		}
+	]
+  }
+}
