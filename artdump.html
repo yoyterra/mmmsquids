@@ -24,6 +24,7 @@
 
     const artpage = pages[type];
     titleEl.textContent = artpage.title;
+	document.getElementById("backbutton").href = document.getElementById("backbutton").href + "?scrollTo=" + artpage.scrollto;
 
     // Render pages based on pageCount
     for (let i = 1; i <= artpage.pageCount; i++) {
@@ -61,7 +62,7 @@
 <body class="bg-white text-gray-900 font-sans">
   <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html?scrollTo=spreads" class="text-lg font-bold">← Back</a>
+      <a id="backbutton" href="index.html" class="text-lg font-bold">← Back</a>
       <h1 id="artpage-title" class="text-lg font-semibold">Loading...</h1>
       <div></div>
     </div>

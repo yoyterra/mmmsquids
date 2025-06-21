@@ -1,11 +1,12 @@
 {
   "charactersheet": {
     "title": "Character sheets",
-    "pageCount": 4
+    "pageCount": 4,
+	"scrollto": "spreads"
   },
   "doodle": {
     "title": "Doodles & Memes",
-    "pageCount": 10,
+    "pageCount": 12,
 	"note": [
 		{
 			"index": 2,
@@ -15,6 +16,37 @@
 			"index": 6,
 			"text": "\"Am I a boy? Am I a girl? Who knows! But everyone finds me hot and that makes everyone gay\""
 		}
-	]
+	],
+	"scrollto": "spreads"
+  },
+  "gifts": {
+    "title": "Gifts",
+    "pageCount": 1,
+	"note": [
+		{
+			"index": 1,
+			"text": "Test"
+		}
+	],
+	"scrollto": "extra"
+  },
+  "mysterious": {
+    "title": "Mysterious items",
+    "pageCount": 4,
+	"note": [
+		{
+			"index": 1,
+			"text": "Bunny outfit!"
+		},
+		{
+			"index": 2,
+			"text": "Mysterious brownies (Banned episode)"
+		},
+		{
+			"index": 4,
+			"text": "Loungewear!"
+		}
+	],
+	"scrollto": "extra"
   }
 }

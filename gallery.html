@@ -10,8 +10,8 @@
 <body class="bg-white text-gray-900 font-sans">
 <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
     <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html?scrollTo=spreads" class="text-xl font-bold">← Back</a>
-      <h1 id="chapter-title" class="text-lg font-semibold">Colour Art</h1>
+      <a href="index.html" id="backbutton" class="text-xl font-bold">← Back</a>
+      <h1 id="page-title" class="text-lg font-semibold"></h1>
       <div></div>
     </div>
   </nav>
@@ -75,13 +75,17 @@ modal.addEventListener("click", (e) => {
 	
 	const response = await fetch("assets/data/gallery.json");
     const itemsjson = await response.json();
+	const titleEl = document.getElementById("page-title");
 	
 	if (!type || !itemsjson || !itemsjson[type]) {
       titleEl.textContent = "Page Not Found";
       return;
     }
 
-    const imageData = itemsjson[type];
+	titleEl.textContent = itemsjson[type]["title"];
+	document.getElementById("backbutton").href = document.getElementById("backbutton").href + "?scrollTo=" + itemsjson[type]["scrollto"];
+	
+    const imageData = itemsjson[type]["items"];
     const gallery = document.getElementById("gallery");
 
 function renderGallery() {
@@ -118,6 +122,7 @@ function renderGallery() {
 
     // Initialize
     renderGallery();
+	
 });
   </script>
 </body>
