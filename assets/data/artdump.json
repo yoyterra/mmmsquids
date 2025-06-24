@@ -21,11 +21,35 @@
   },
   "gifts": {
     "title": "Gifts",
-    "pageCount": 1,
+    "pageCount": 7,
 	"note": [
 		{
 			"index": 1,
-			"text": "Test"
+			"text": "From X@kuonjifs"
+		},
+		{
+			"index": 2,
+			"text": "To X@kuonjifs"
+		},
+		{
+			"index": 3,
+			"text": "From X@ooorangeocto99"
+		},
+		{
+			"index": 4,
+			"text": "To X@ooorangeocto99"
+		},
+		{
+			"index": 5,
+			"text": "From Anonymous"
+		},
+		{
+			"index": 6,
+			"text": "From X@Ethelberd00 & X@iStarletheaven"
+		},
+		{
+			"index": 7,
+			"text": "From X@Ethelberd00 & X@slisaartzsa"
 		}
 	],
 	"scrollto": "extra"
