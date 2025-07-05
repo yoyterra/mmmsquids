@@ -72,5 +72,10 @@
 		}
 	],
 	"scrollto": "extra"
+  },
+  "freetalk": {
+    "title": "Free Talk",
+    "pageCount": 1,
+	"scrollto": "extra"
   }
 }
