@@ -21,7 +21,7 @@
   },
   "gifts": {
     "title": "Gifts",
-    "pageCount": 7,
+    "pageCount": 8,
 	"note": [
 		{
 			"index": 1,
@@ -50,6 +50,10 @@
 		{
 			"index": 7,
 			"text": "From X@Ethelberd00 & X@slisaartzsa"
+		},
+		{
+			"index": 8,
+			"text": "From X@HG_swdiary"
 		}
 	],
 	"scrollto": "extra"
