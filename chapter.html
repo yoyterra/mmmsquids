@@ -29,12 +29,16 @@
     // Render pages based on pageCount
     for (let i = 1; i <= chapter.pageCount; i++) {
 	
-    // Show note if present
-	  if (chapter.note && chapter.note.index == i) {
-        const noteEl = document.createElement("p");
-        noteEl.textContent = chapter.note.text;
-        noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
-        imageContainer.appendChild(noteEl);
+      // Show note if present
+	    if (chapter.note) {
+        for (let j = 0; j < chapter.note.length; j++) {
+          if (chapter.note[j].index == i) {
+            const noteEl = document.createElement("p");
+            noteEl.textContent = chapter.note[j].text;
+            noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
+            imageContainer.appendChild(noteEl);
+          }
+        }
       }
       const img = document.createElement("img");
       img.src = `assets/images/${chapterId}_page${i}.jpg`;
@@ -76,7 +80,7 @@
 
   <!-- Footer -->
   <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
-    <div class="inline-block">mmmsquids 2023-2025. Created with love <i class="bi bi-suit-heart-fill" ></i></style></div>
+    <div class="inline-block">mmmsquids 2023-2026. Created with love <i class="bi bi-suit-heart-fill" ></i></style></div>
   </footer>
 </body>
 </html>

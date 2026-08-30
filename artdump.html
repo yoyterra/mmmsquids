@@ -47,15 +47,6 @@
       imageContainer.appendChild(img);
     }
 	
-	if (type == 'doodle') {
-		const videoContainer = document.getElementById("video-container");
-		videoContainer.className = "space-y-6";
-		const noteEl = document.createElement("p");
-        noteEl.textContent = "A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏";
-        noteEl.className = "text-sm text-center text-gray-600 italic mb-6";
-        imageContainer.appendChild(noteEl);
-	}
-
   });
 function linkifyXHandles(text) {
   return text.replace(/X@(\w+)/g, (match, handle) => {
@@ -78,14 +69,11 @@ function linkifyXHandles(text) {
   <main class="container mx-auto px-4 py-8">
     <!-- Comic images -->
     <div id="image-container" class="space-y-6">
-	</div>
-	<div id="video-container" class="space-y-6 hidden">
-	<blockquote class="twitter-tweet tw-align-center" data-media-max-width="560"><p lang="en" dir="ltr">A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏 <a href="https://t.co/HGh62Lg72m">pic.twitter.com/HGh62Lg72m</a></p>&mdash; mmm squids🦑✨ (@mmmsquids) <a href="https://twitter.com/mmmsquids/status/1854388053152038933?ref_src=twsrc%5Etfw">November 7, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
-	</div>
+	  </div>
   </main>
   <!-- Footer -->
   <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
-    <div class="inline-block">mmmsquids 2023-2025. Created with love <i class="bi bi-suit-heart-fill" ></i></style></div>
+    <div class="inline-block">mmmsquids 2023-2026. Created with love <i class="bi bi-suit-heart-fill" ></i></style></div>
   </footer>
 </body>
 </html>

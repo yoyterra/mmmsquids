@@ -29,6 +29,50 @@
       margin-top: -80px;
       visibility: hidden;
     }
+    .update-dot {
+      position: absolute;
+      top: 0.45rem;
+      right: 0.45rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 9999px;
+      background: #3b82f6;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.9), 0 0 12px rgba(59, 130, 246, 0.9);
+      animation: pulse-dot 1.6s ease-in-out infinite;
+      z-index: 1;
+    }
+    .update-dot::after {
+      content: "Last Updated: August 30, 2026";
+      position: absolute;
+      right: 0.15rem;
+      top: 1.1rem;
+      transform: translateX(0);
+      background: rgba(17, 24, 39, 0.95);
+      color: #fff;
+      font-size: 0.7rem;
+      line-height: 1.2;
+      white-space: nowrap;
+      padding: 0.35rem 0.5rem;
+      border-radius: 0.35rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .update-dot:hover::after,
+    .update-dot:focus::after {
+      opacity: 1;
+    }
+    @keyframes pulse-dot {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.35);
+        opacity: 0.7;
+      }
+    }
   </style>
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
@@ -37,10 +81,17 @@
 	const comicContainer = document.getElementById("comic-container");
 	
 	// Render comic section
-	for (let i = 28; i >= 1; i--) {
+	for (let i = 29; i >= 1; i--) {
 		const linkEl = document.createElement("a");
 		linkEl.href = `chapter.html?chapterid=ch${i}`;
-		linkEl.className = "bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition";
+		linkEl.className = "bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition relative";
+		if (i === 29) {
+		  const updateDot = document.createElement("span");
+		  updateDot.className = "update-dot";
+		  updateDot.setAttribute("aria-label", "Updated content");
+		  updateDot.title = "Last Updated: August 30, 2026";
+		  linkEl.appendChild(updateDot);
+		}
 		const img = document.createElement("img");
 		img.src = `assets/images/thumb_ch${i}.jpg`;
 		img.alt = `Comic#${i}`;
@@ -128,17 +179,27 @@
             <p class="text-gray-600 text-sm"></p>
           </div>
         </a>
-		<a href="gallery.html?type=art" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+		<a href="gallery.html?type=art" class="relative bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition" title="Last Updated: August 30, 2026">
+          <span class="update-dot" aria-label="Updated content"></span>
           <img src="assets/images/thumb_art.jpg" alt="Colour Art" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold">Colour Art</h3>
             <p class="text-gray-600 text-sm"></p>
           </div>
         </a>
-		<a href="artdump.html?type=doodle" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+		<a href="artdump.html?type=doodle" class="relative bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition" title="Last Updated: August 30, 2026">
+          <span class="update-dot" aria-label="Updated content"></span>
           <img src="assets/images/thumb_doodle.jpg" alt="Doodles & Memes" class="w-full h-48 object-cover">
           <div class="p-4">
             <h3 class="text-lg font-semibold">Doodles & Memes</h3>
+            <p class="text-gray-600 text-sm"></p>
+          </div>
+        </a>
+    <a href="video.html" class="relative bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition" title="Last Updated: August 30, 2026">
+          <span class="update-dot" aria-label="Updated content"></span>
+          <img src="assets/images/thumb_video.jpg" alt="Video Content" class="w-full h-48 object-cover">
+          <div class="p-4">
+            <h3 class="text-lg font-semibold">Video Content</h3>
             <p class="text-gray-600 text-sm"></p>
           </div>
         </a>
@@ -173,7 +234,8 @@
             <p class="text-gray-600 text-sm">Co-creators' yapping</p>
           </div>
         </a>
-        <a href="#" onclick="showContentWarning('artdump.html?type=mysterious')" class="bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition">
+        <a href="#" onclick="showContentWarning('artdump.html?type=mysterious')" class="relative bg-gray-100 rounded-lg overflow-hidden shadow hover:shadow-lg transition" title="Last Updated: August 30, 2026">
+          <span class="update-dot" aria-label="Updated content"></span>
           <!--<img src="assets/images/thumb_mysterious.jpg" alt="Mysterious" class="w-full h-48 object-cover filter blur-lg">-->
 		  <img src="assets/images/thumb_mysterious.jpg" alt="Mysterious" class="w-full h-48 object-cover">
           <div class="p-4">

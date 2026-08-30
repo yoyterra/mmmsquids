@@ -6,10 +6,12 @@
   "ch2": {
     "title": "Crusty",
     "pageCount": 3,
-    "note": {
-      "index": 3,
-      "text": "The reason why he changed his mind:"
-    }
+    "note": [
+      {
+        "index": 3,
+        "text": "The reason why he changed his mind:"
+      }
+    ]
   },
   "ch3": {
     "title": "After the splatfest",
@@ -114,5 +116,23 @@
   "ch28": {
     "title": "Best friends!",
     "pageCount": 5
+  },
+  "ch29": {
+    "title": "Extras",
+    "pageCount": 3,
+    "note": [
+      {
+        "index": 1,
+        "text": "New outfit"
+      },
+      {
+        "index": 2,
+        "text": "Toxic yaoi"
+      },
+      {
+        "index": 3,
+        "text": "Grizzco roller"
+      }
+    ]
   }
 }

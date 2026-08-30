@@ -6,7 +6,7 @@
   },
   "doodle": {
     "title": "Doodles & Memes",
-    "pageCount": 12,
+    "pageCount": 20,
 	"note": [
 		{
 			"index": 2,
@@ -60,7 +60,7 @@
   },
   "mysterious": {
     "title": "Mysterious items",
-    "pageCount": 4,
+    "pageCount": 5,
 	"note": [
 		{
 			"index": 1,
@@ -73,6 +73,10 @@
 		{
 			"index": 4,
 			"text": "Loungewear!"
+		},
+		{
+			"index": 5,
+			"text": "Shirtless smug"
 		}
 	],
 	"scrollto": "extra"

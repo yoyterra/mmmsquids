@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MMMSQUIDS - Video Content</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+   <script>
+  document.addEventListener("DOMContentLoaded", async () => {
+	const params = new URLSearchParams(window.location.search);
+
+    const titleEl = document.getElementById("artpage-title");
+    const imageContainer = document.getElementById("image-container");
+    titleEl.textContent = "Video Content";
+	  document.getElementById("backbutton").href = document.getElementById("backbutton").href + "?scrollTo=spreads";
+
+	
+  });
+function linkifyXHandles(text) {
+  return text.replace(/X@(\w+)/g, (match, handle) => {
+    return `<a href="https://x.com/${handle}" target="_blank" rel="noopener noreferrer">@${handle}</a>`;
+  });
+}
+
+
+</script>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <nav class="bg-white border-b border-gray-200 p-4 sticky top-0 z-10 shadow-sm">
+    <div class="container mx-auto flex justify-between items-center">
+      <a id="backbutton" href="index.html" class="text-lg font-bold"><i class="bi bi-arrow-left-circle"></i> Back</a>
+      <h1 id="artpage-title" class="text-lg font-semibold">Loading...</h1>
+      <div></div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-8">
+	<div id="video-container" class="space-y-6">
+    <p class="text-sm text-center text-gray-600 italic mb-6">A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏</p>
+	<blockquote class="twitter-tweet tw-align-center" data-media-max-width="560"><p lang="en" dir="ltr">A tribute to all the rando octoling boys who harass… um showed their affection towards the one and only smug squid🙏 <a href="https://t.co/HGh62Lg72m">pic.twitter.com/HGh62Lg72m</a></p>&mdash; mmm squids🦑✨ (@mmmsquids) <a href="https://twitter.com/mmmsquids/status/1854388053152038933?ref_src=twsrc%5Etfw">November 7, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+    <p class="text-sm text-center text-gray-600 italic mb-6">Ice cream with sprinkles 🍨</p>
+	<blockquote class="twitter-tweet tw-align-center" data-media-max-width="560"><p lang="en" dir="ltr">Ice cream with sprinkles 🍨 <a href="https://t.co/qgjJElttBd">pic.twitter.com/qgjJElttBd</a></p>&mdash; mmm squids🦑✨ (@mmmsquids) <a href="https://x.com/mmmsquids/status/1969582006586483074?ref_src=twsrc%5Etfw">September 21, 2025</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+	</div>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 text-gray-500 text-center py-4 mt-12">
+    <div class="inline-block">mmmsquids 2023-2026. Created with love <i class="bi bi-suit-heart-fill" ></i></style></div>
+  </footer>
+</body>
+</html>
