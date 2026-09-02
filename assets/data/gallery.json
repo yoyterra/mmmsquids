@@ -95,5 +95,49 @@
         "description": "Happy birthday to ken 2026"
       }
     ]
+  },
+  "ken": {
+    "title": "Ken's art",
+    "scrollto": "spreads",
+    "items": [
+      {
+        "type": "single",
+        "description": "Happy New Year"
+      },
+      {
+        "type": "single",
+        "description": "Fall"
+      },
+      {
+        "type": "single",
+        "description": "Skate date redraw"
+      },
+      {
+        "type": "group",
+        "thumbnailIndex": 1,
+        "description": "Paradise kiss parody",
+        "imageCount": 2
+      },
+      {
+        "type": "single",
+        "description": "Valentines"
+      },
+      {
+        "type": "single",
+        "description": "Dominican"
+      },
+      {
+        "type": "single",
+        "description": "Bachata"
+      },
+      {
+        "type": "single",
+        "description": "Spanish"
+      },
+      {
+        "type": "single",
+        "description": "Newbie's new outfit"
+      }
+    ]
   }
 }

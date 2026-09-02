@@ -103,7 +103,7 @@ function renderGallery() {
 	  const thumbnailurl = "assets/images/"+type+"_page"+(index+1) + "_" + item.thumbnailIndex +".jpg";
       imageBox.style.backgroundImage = `url(${thumbnailurl})`;
 	  let imgarr = [];
-	  for (let i = 0; i <= item.imageCount; i++){
+	  for (let i = 0; i < item.imageCount; i++){
 		imgarr.push("assets/images/"+type+"_page"+(index+1) + "_" + (i+1) +".jpg");
 	  }
 	  imageBox.onclick = () => openModal(imgarr);
