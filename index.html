@@ -57,6 +57,20 @@
       .nav-tab > span {
         transform: translateY(-1px);
       }
+      .nav-tabs {
+        scrollbar-width: none;
+      }
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
+      }
+      @media (max-width: 639px) {
+        .nav-tab {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+          font-size: 0.875rem;
+          flex-shrink: 0;
+        }
+      }
       section {
         scroll-margin-top: 118px;
       }
@@ -279,7 +293,9 @@
           />
           <a href="#"><h1 class="text-xl font-bold">MMM SQUIDS🦑✨</h1></a>
         </div>
-        <div class="flex flex-wrap justify-center sm:justify-end gap-2">
+        <div
+          class="nav-tabs flex flex-nowrap justify-start sm:justify-end gap-2 overflow-x-auto"
+        >
           <a
             href="#chapters"
             class="nav-tab inline-flex items-center justify-center text-gray-700 hover:text-black px-3"
