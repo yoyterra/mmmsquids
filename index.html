@@ -40,12 +40,25 @@
       html {
         scroll-behavior: smooth;
       }
-      section::before {
-        content: "";
-        display: block;
-        height: 118px;
-        margin-top: -80px;
-        visibility: hidden;
+      .nav-tab {
+        box-sizing: border-box;
+        height: 2.5rem;
+        padding: 0 0.875rem;
+        border-radius: 0.5rem;
+        line-height: 1;
+        transition:
+          background-color 0.2s ease,
+          color 0.2s ease;
+      }
+      .nav-tab.active {
+        background-color: #f3f4f6;
+        color: #374151;
+      }
+      .nav-tab > span {
+        transform: translateY(-1px);
+      }
+      section {
+        scroll-margin-top: 118px;
       }
       .update-dot {
         position: absolute;
@@ -62,7 +75,7 @@
         z-index: 5;
       }
       .update-dot::after {
-        content: "Last Updated: September 1, 2026";
+        content: attr(data-update-label);
         position: absolute;
         right: 0.15rem;
         top: 1.1rem;
@@ -96,6 +109,89 @@
       }
     </style>
     <script>
+      const LAST_UPDATED = "September 19, 2026";
+
+      function getLastUpdatedLabel() {
+        return `Last Updated: ${LAST_UPDATED}`;
+      }
+
+      function applyLastUpdatedDates() {
+        const label = getLastUpdatedLabel();
+        document
+          .querySelectorAll("[data-update-date], .update-dot")
+          .forEach((element) => {
+          element.dataset.updateLabel = label;
+          element.title = label;
+          });
+      }
+
+      function setupActiveNavigation() {
+        const tabs = [...document.querySelectorAll(".nav-tab")];
+        const sections = tabs
+          .map((tab) => document.querySelector(tab.getAttribute("href")))
+          .filter(Boolean);
+
+        function setActiveTab(sectionId) {
+          tabs.forEach((tab) => {
+            const isActive = tab.getAttribute("href") === `#${sectionId}`;
+            tab.classList.toggle("active", isActive);
+            if (isActive) {
+              tab.setAttribute("aria-current", "page");
+            } else {
+              tab.removeAttribute("aria-current");
+            }
+          });
+        }
+
+        function updateActiveTabFromPosition() {
+          const isAtPageBottom =
+            window.innerHeight + window.scrollY >=
+            document.documentElement.scrollHeight - 4;
+          const activeSection = isAtPageBottom
+            ? sections.at(-1)
+            : sections
+                .filter((section) => section.getBoundingClientRect().top <= 140)
+                .at(-1) || sections[0];
+
+          if (activeSection) {
+            setActiveTab(activeSection.id);
+          }
+        }
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", (event) => {
+            const targetSection = document.querySelector(
+              tab.getAttribute("href"),
+            );
+            const navigation = document.querySelector("nav");
+            if (!targetSection) {
+              return;
+            }
+
+            event.preventDefault();
+            setActiveTab(targetSection.id);
+            window.scrollTo({
+              top:
+                targetSection.id === "chapters"
+                  ? 0
+                  : targetSection.offsetTop - (navigation?.offsetHeight || 118),
+              behavior: "smooth",
+            });
+          });
+        });
+
+        const observer = new IntersectionObserver(
+          updateActiveTabFromPosition,
+          { threshold: [0, 0.25, 0.5, 0.75, 1] },
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        window.addEventListener("scroll", updateActiveTabFromPosition, {
+          passive: true,
+        });
+        updateActiveTabFromPosition();
+      }
+
       document.addEventListener("DOMContentLoaded", async () => {
         const response = await fetch("assets/data/chapters.json");
         const chapters = await response.json();
@@ -110,8 +206,8 @@
           if (i === 29) {
             const updateDot = document.createElement("span");
             updateDot.className = "update-dot";
+            updateDot.dataset.updateDate = "";
             updateDot.setAttribute("aria-label", "Updated content");
-            updateDot.title = "Last Updated: September 1, 2026";
             linkEl.appendChild(updateDot);
           }
           const img = document.createElement("img");
@@ -132,6 +228,8 @@
           linkEl.appendChild(divEl);
           comicContainer.appendChild(linkEl);
         }
+        applyLastUpdatedDates();
+        setupActiveNavigation();
         // Modal window
         const modal = document.getElementById("contentWarningModal");
         const proceedBtn = document.getElementById("proceedBtn");
@@ -182,17 +280,25 @@
           <a href="#"><h1 class="text-xl font-bold">MMM SQUIDS🦑✨</h1></a>
         </div>
         <div class="flex flex-wrap justify-center sm:justify-end gap-2">
-          <a href="#chapters" class="text-gray-700 hover:text-black px-3 py-1"
-            >Comics</a
+          <a
+            href="#chapters"
+            class="nav-tab inline-flex items-center justify-center text-gray-700 hover:text-black px-3"
+            ><span>Comics</span></a
           >
-          <a href="#spreads" class="text-gray-700 hover:text-black px-3 py-1"
-            >Art & Doodles</a
+          <a
+            href="#spreads"
+            class="nav-tab inline-flex items-center justify-center text-gray-700 hover:text-black px-3"
+            ><span>Art & Doodles</span></a
           >
-          <a href="#extra" class="text-gray-700 hover:text-black px-3 py-1"
-            >Extra</a
+          <a
+            href="#extra"
+            class="nav-tab inline-flex items-center justify-center text-gray-700 hover:text-black px-3"
+            ><span>Extra</span></a
           >
-          <a href="#about" class="text-gray-700 hover:text-black px-3 py-1"
-            >About</a
+          <a
+            href="#about"
+            class="nav-tab inline-flex items-center justify-center text-gray-700 hover:text-black px-3"
+            ><span>About</span></a
           >
         </div>
       </div>
@@ -228,7 +334,7 @@
           <a
             href="gallery.html?type=art"
             class="relative bg-gray-100 rounded-lg shadow hover:shadow-lg transition"
-            title="Last Updated: September 1, 2026"
+            data-update-date
           >
             <span class="update-dot" aria-label="Updated content"></span>
             <img
@@ -244,7 +350,7 @@
           <a
             href="artdump.html?type=doodle"
             class="relative bg-gray-100 rounded-lg shadow hover:shadow-lg transition"
-            title="Last Updated: September 1, 2026"
+            data-update-date
           >
             <span class="update-dot" aria-label="Updated content"></span>
             <img
@@ -260,7 +366,7 @@
           <a
             href="video.html"
             class="relative bg-gray-100 rounded-lg shadow hover:shadow-lg transition"
-            title="Last Updated: September 1, 2026"
+            data-update-date
           >
             <span class="update-dot" aria-label="Updated content"></span>
             <img
@@ -276,7 +382,7 @@
           <a
             href="gallery.html?type=ken"
             class="relative bg-gray-100 rounded-lg shadow hover:shadow-lg transition"
-            title="Last Updated: September 1, 2026"
+            data-update-date
           >
             <span class="update-dot" aria-label="Updated content"></span>
             <img
@@ -326,7 +432,7 @@
             href="#"
             onclick="showContentWarning('artdump.html?type=mysterious')"
             class="relative bg-gray-100 rounded-lg shadow hover:shadow-lg transition"
-            title="Last Updated: September 1, 2026"
+            data-update-date
           >
             <span class="update-dot" aria-label="Updated content"></span>
             <img
